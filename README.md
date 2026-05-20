@@ -13,22 +13,23 @@ Projeto da disciplina de Python para Automação em DevOps. O objetivo foi desen
 docker build -t backup-automatizado .
 
 # 2. colocar arquivos na pasta data/
+mkdir -p data
 echo "arquivo de teste" > data/teste.txt
 
 # 3. executar o backup
-docker run --rm -v $(pwd)/data:/app/data -v $(pwd)/backup:/app/backup -v $(pwd)/logs:/app/logs backup-automatizado
+docker run --rm -v "$(pwd)/data:/app/data" -v "$(pwd)/backup:/app/backup" -v "$(pwd)/logs:/app/logs" backup-automatizado
 ```
 
 Pra passar diretórios customizados via CLI:
 
 ```bash
-docker run --rm -v $(pwd)/data:/app/data -v $(pwd)/backup:/app/backup -v $(pwd)/logs:/app/logs backup-automatizado /app/data /app/backup
+docker run --rm -v "$(pwd)/data:/app/data" -v "$(pwd)/backup:/app/backup" -v "$(pwd)/logs:/app/logs" backup-automatizado /app/data /app/backup
 ```
 
 ## Como rodar os testes
 
 ```bash
-docker run --rm --entrypoint pytest backup-automatizado /app/tests -v
+docker run --rm --entrypoint pytest backup-automatizado tests/ -v
 ```
 
 Ou localmente:
