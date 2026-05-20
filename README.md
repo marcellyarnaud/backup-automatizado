@@ -29,7 +29,7 @@ docker run --rm -v "$(pwd)/data:/app/data" -v "$(pwd)/backup:/app/backup" -v "$(
 ## Como rodar os testes
 
 ```bash
-docker run --rm --entrypoint pytest backup-automatizado tests/ -v
+docker run --rm --entrypoint pytest backup-automatizado /app/tests -v
 ```
 
 Ou localmente:
